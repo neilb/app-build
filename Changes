@@ -1,0 +1,99 @@
+Revision history for Perl module App::Build
+
+0.74_03 2011-07-24
+    - Blind test fix for cases when install{site}man3dir is not set.
+
+0.74_02 2011-07-08
+    - Blind test fix for cases when man3ext is set to "0".
+
+0.74_01 2011-07-06
+    - Blind test fix for cases when man3ext is set to "0".
+
+0.74 2011-03-07
+    - More test fixes.
+
+0.73 2010-04-18
+    - Some test fixes.
+
+0.72 2008-11-08
+    - Try to avoid test failures when there is no support for manpages.
+
+0.71 2007-12-25
+    - Fix tests to work under Windows and various Unix configurations.
+
+0.70 2007-12-24
+    - Undo @ARGV stripping done by App::Options without relying on App::Options
+      internals.
+
+0.69 2007-12-11
+    - Fix the handling of standard build types (for example libdoc) by fixing
+      install_base return value when used as an accessor.
+    - Undo the @ARGV stripping done by App::Options to allow Module::Build
+      option processing to work as expected.
+    - Allow overriding paths specified by extra_dirs->dest_dir using
+      the standard --install_path option.
+    - Make the paths specified by install_path relative to install prefix
+      when they are relative (Module::Build behaviour is to make them
+      relative to current directory). 
+
+0.68 2007-06-17
+    - Some test fixes for Perl 5.6.2 and when Archive::Extract/File::Fetch
+      are not present.
+
+0.67 2007-06-13
+    - Rewritten mirror() to use File::Fetch.
+    - Rewritten unpack() to use Archive::Extract.
+    - Changed mirror() and unpack() into instance methods and use log_info()
+      instead of print inside them.
+
+0.66 2007-06-05
+    - More comprehensive tests, remove unused code and some
+      warnings.
+
+0.65 2007-05-31
+    - Fix some warnings when install_base is not specified.
+    - Allow calling install_base after the App::Build object
+      has been constructed.
+    - Fix handling of the default 'dest_dir' attribute when
+      'extra_dirs' is specified as an hash.
+    - Fix compatibility with Module::Build 0.28 and require it.
+
+0.64 2007-05-10
+    - Do not use App::Build in App::Build's Build.PL because it breaks
+      site/vendor selection operated (for example) by Gentoo g-cpan.
+
+0.63 2007-05-08
+    - Re-release changing the maintainer.
+
+0.62 2006-02-16
+    - Ensure that SVN files (files in */.svn) are not copied/installed
+
+0.61 2005-08-18
+    - Fixed some test cases that were erroring out
+
+0.60 2005-04-21
+    - Remove "Build" from @ARGV to get around weirdness with CPAN shell
+    - PREFIX is a synonym for install_base
+    - install scripts into $PREFIX/bin, not $PREFIX/scripts.
+    - override has_config_data() to always return false to overcome weirdness
+    - added regression tests (t/main.t)
+    - add the "execute" attribute on "extra_dirs"
+    - adds execute permission only to #! files in dirs that contain executables
+
+0.50 2005-04-20
+    - Cause "bin" directories (i.e. cgi-bin) to have
+      perl interpreter substitution
+    - Ensure execute permission set on "bin" directories
+    - Properly write the .packlist
+      (right location, right contents, right format)
+    - Ensure that packlist is written when no "module_name" exists
+    - Ensure that CVS and RCS files are not copied/installed
+
+0.10 2005-04-20
+    - Initial release
+    - Cause extra_dirs to be installed
+    - Add configure() hook
+    - Ensure that "lib" is always at the head of @INC
+    - Works with install_base or not
+    - unset $ENV{PREFIX} so that Module::Build doesn't complain
+
