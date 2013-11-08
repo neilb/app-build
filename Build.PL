@@ -20,6 +20,11 @@ my $build = Module::Build->new (
     create_makefile_pl    => 'passthrough',
     add_to_cleanup        => [ 't/test_install', 't/*/Build', 't/*/_build',
                                't/*/blib', 'unpack', 'archive' ],
+    meta_merge => {
+        resources => {
+            repository => 'https://github.com/mbarbon/app-build'
+        }
+    },
 );
 
 $build->create_build_script;
